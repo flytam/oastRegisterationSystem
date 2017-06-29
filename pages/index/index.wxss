@@ -1,21 +1,42 @@
 /**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.inputs{
+display: inline-block;
+position:relative;
+top:10rpx;
+text-align: center;
 }
-
-.userinfo-nickname {
-  color: #aaa;
+.manner{
+  background-image: url('http://182.254.215.205/source/manner.jpg');
+  width: 400rpx;
+  height: 326rpx;
+  background-size:contain; 
+  background-repeat:no-repeat;
+  margin: 0 auto;
 }
+.inputitem{
+  background-color: white;
+  margin-bottom: 10rpx; 
+}
+.pickeritem{
+  margin: 20rpx 0;
+}
+.title{
+  font-size: 24rpx;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+}
+.picker{
+  text-align: center;
+  height: 40rpx;
+  display: inline-block;
+}
+.gg{
+  width:210px;
+display:inline-block;
 
-.usermotto {
-  margin-top: 200px;
+}
+.holder{
+    color: lightgray;
 }

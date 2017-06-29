@@ -5,8 +5,9 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "南邮光院科协招新报名",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "oast",
+    "navigationBarTextStyle":"black",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
   }
 }
