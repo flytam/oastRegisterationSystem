@@ -2,9 +2,8 @@
 
 .inputs{
 display: inline-block;
-position:relative;
-top:10rpx;
 text-align: center;
+width: 100%;
 }
 .manner{
   background-image: url('http://182.254.215.205/source/manner.jpg');
@@ -14,15 +13,19 @@ text-align: center;
   background-repeat:no-repeat;
   margin: 0 auto;
 }
+.inputinfo
+{
+  position: absolute;
+}
 .inputitem{
   background-color: white;
   margin-bottom: 10rpx; 
 }
 .pickeritem{
-  margin: 20rpx 0;
+  text-align: center;
 }
 .title{
-  font-size: 24rpx;
+  font-size: 48rpx;
   color: black;
   font-weight: bold;
   text-align: center;
@@ -31,11 +34,11 @@ text-align: center;
   text-align: center;
   height: 40rpx;
   display: inline-block;
+  width: 100%;
 }
 .gg{
-  width:210px;
+  width:100%;
 display:inline-block;
-
 }
 .holder{
     color: lightgray;
