@@ -7,14 +7,17 @@ router.get('/', function(req, res, next) {
 });
 
 const database = require('../mysql');
+
+//查询是否已经注册
 router.get('/check', (req,res) =>{
-  const id = req.query.id;
-  database.check(res,id);
+  const code = req.query.code;
+  database.check(res,code);
 });
 
+
+//还没有注册的提交或者已经注册的修改
 router.post('/post',(req,res) =>{
   const info = req.body;
-  console.log("213213321")
   console.log('body',req.body)
   database.post(res,info);
 });

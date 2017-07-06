@@ -26,13 +26,13 @@
     <text class="inputinfo" confirm-type="next">手机：</text>
     <input type="number" class="inputs" placeholder="请输入手机" placeholder-class="holder" bindblur="getPhone"/>
     </view>
-        <text class="error">{{phoneError}}</text>
+        <text class="error">{{phoneError?"手机号格式错误":""}}</text>
 
     <view class="inputitem">
     <text class="inputinfo" confirm-type="next">邮箱：</text>
     <input type="text" class="inputs" placeholder="请输入邮箱" placeholder-class="holder" bindblur="getEmail"/>
     </view>
-         <text class="error">{{emailError}}</text>
+         <text class="error">{{emailError?"邮箱格式错误":""}}</text>
     <view class="pickeritem inputitem">
    <text class="inputinfo">部门：</text>
     <picker class="picker" bindchange="getDepartment" value="{{index}}" range="{{departmentArr}}">

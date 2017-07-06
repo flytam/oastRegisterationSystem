@@ -18,14 +18,16 @@ Page({
     department: "",
     email: "",
     sex:"",
-    phoneError:"",
-    emailError:""
+    phoneError:false,
+    emailError:false
   },
   onLoad: function () {},
   sendInfo: function () {
-    if (this.data.phoneError===""&&this.data.emailError===""){
+    if (this.data.phoneError&&this.data.emailError){
       //判断下全部正确填写才能提交
-      
+        wx.request({
+          url: '',
+        })
           console.log(this.data)
     }
     else {
@@ -43,17 +45,17 @@ Page({
   getPhone: function (e) {
     if (!(/^1[34578]\d{9}$/.test(e.detail.value))){
       //格式错误
-      this.setData({phoneError:"手机号格式错误"});
+      this.setData({phoneError:true});
     }
-     else {this.setData({phone: e.detail.value,phoneError:""});}
+     else {this.setData({phone: e.detail.value,phoneError:false});}
   },
   getEmail: function (e) {
     if (/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(e.detail.value))
-    {this.setData({email: e.detail.value,emailError:""})}
+    {this.setData({email: e.detail.value,emailError:false})}
     else {
       //格式错误
       this.setData({
-        emailError:"请填写正确邮箱"
+        emailError:true
       })
     }
   },
