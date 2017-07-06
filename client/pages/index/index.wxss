@@ -43,3 +43,8 @@ display:inline-block;
 .holder{
     color: lightgray;
 }
+.error{
+  color: red;
+  font-size: 25rpx;
+  text-align: center;
+}
