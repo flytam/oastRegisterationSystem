@@ -1,0 +1,10 @@
+.showContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-top:200rpx;
+}
+.info{
+    margin-top: 50rpx;
+}

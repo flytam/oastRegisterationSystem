@@ -6,7 +6,7 @@ text-align: center;
 width: 100%;
 }
 .manner{
-  background-image: url('http://182.254.215.205/source/manner.jpg');
+  background-image: url('https://njuptdocker.cn/source/manner.jpg');
   width: 400rpx;
   height: 326rpx;
   background-size:contain; 

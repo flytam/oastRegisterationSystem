@@ -1,0 +1,4 @@
+<view class="container showContainer">
+    <icon type="success" size="60"/>
+    <text class="info">你提交报名信息，如修改请联系xxx</text>
+</view>

@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.3",
+    "morgan": "^1.8.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+    "scripts": {
+    "start": "nodemon ./app.js",
+    "pm2": "pm2 start pm2.json"
+  }
+}
