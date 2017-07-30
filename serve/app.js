@@ -21,4 +21,4 @@ app.all('*', (req, res, next) => {
     console.log(req.body)
     next();
 });
-app.use('/',require('./router/index'));
+app.use('/api',require('./router/index'));

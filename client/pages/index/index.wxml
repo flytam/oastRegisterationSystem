@@ -26,13 +26,10 @@
     <text class="inputinfo" confirm-type="next">手机：</text>
     <input type="number" class="inputs" placeholder="请输入手机" placeholder-class="holder" bindblur="getPhone"/>
     </view>
-        <text class="error">{{phoneError?"手机号格式错误":""}}</text>
-
     <view class="inputitem">
     <text class="inputinfo" confirm-type="next">邮箱：</text>
     <input type="text" class="inputs" placeholder="请输入邮箱" placeholder-class="holder" bindblur="getEmail"/>
     </view>
-         <text class="error">{{emailError?"邮箱格式错误":""}}</text>
     <view class="pickeritem inputitem">
    <text class="inputinfo">部门：</text>
     <picker class="picker" bindchange="getDepartment" value="{{index}}" range="{{departmentArr}}">
@@ -44,4 +41,6 @@
     <button type="primary" bindtap="sendInfo">
         确认报名
     </button>
+    <text>报名信息以微信号为准，一个微信号只能报一个学号,如需修改，再次报名即可</text>
+    <!-- <button type="primary" bindtap="go">跳转</button> -->
 </view>

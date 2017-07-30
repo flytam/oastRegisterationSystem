@@ -17,44 +17,53 @@ Page({
     phone: "",
     department: "",
     email: "",
-    sex: "",
-    phoneError: false,
-    emailError: false
+    sex: ""
   },
   onLoad: function () {},
+  go: function () {
+    wx.navigateTo({ //报名成功
+      url: '../show/show?status=error&message=xxx'
+    })
+  },
   sendInfo: function () {
     const {
-      id,
+      id, //学号
       department,
       name,
       sex,
       phone,
       email
     } = this.data;
-    if (!this.data.phoneError && !this.data.emailError) {
-
-      // 判断下全部正确填写才能提交
-      wx.request({
-        url: 'https://njuptdocker.cn:8888/post',
-        success: function (res) {
-          console.log(res.data);
-        },
-        method: 'POST',
-        data: {
-          id,
-          department,
-          name,
-          sex,
-          phone,
-          email
-        },
-        header: {
-          'content-type': 'application/json'
+    // console.log(this.data,getApp().globalData.code)
+    wx.request({
+      url: 'https://njuptdocker.cn/api/post',
+      success: function (res) {
+        if (res.data.status === 'ok') {
+          wx.navigateTo({ //报名成功
+            url: '../show/show?status=ok&message=ok'
+          });
         }
-      })
-    } else {
-      return;
-    }
+        else {
+          //报名失败
+          wx.navigateTo({ //报名失败
+            url: `../show/show?status=error&message=${res.data.message}`
+          });
+        }
+      },
+      method: 'POST',
+      data: {
+        id,
+        department,
+        name,
+        sex,
+        phone,
+        email,
+        code: getApp().globalData.code
+      },
+      header: {
+        'content-type': 'application/json'
+      }
+    })
 
   },
   getId: function (e) {
@@ -64,20 +73,10 @@ Page({
     this.setData({name: e.detail.value})
   },
   getPhone: function (e) {
-    if (!(/^1[34578]\d{9}$/.test(e.detail.value))) {
-      //格式错误
-      this.setData({phoneError: true});
-    } else {
-      this.setData({phone: e.detail.value, phoneError: false});
-    }
+    this.setData({phoneError: true});
   },
   getEmail: function (e) {
-    if (/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(e.detail.value)) {
-      this.setData({email: e.detail.value, emailError: false})
-    } else {
-      //格式错误
-      this.setData({emailError: true})
-    }
+    this.setData({email: e.detail.value, emailError: false})
   },
   getSex: function (e) {
     this.setData({
