@@ -19,3 +19,4 @@ function code2openid(code) {
         });
     });
 }
+module.exports = code2openid;

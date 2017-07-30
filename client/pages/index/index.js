@@ -73,7 +73,7 @@ Page({
     this.setData({name: e.detail.value})
   },
   getPhone: function (e) {
-    this.setData({phoneError: true});
+    this.setData({phone:e.detail.value});
   },
   getEmail: function (e) {
     this.setData({email: e.detail.value, emailError: false})
