@@ -55,4 +55,10 @@ router.post('/post', (req, res) => { //提交登陆信息过来
 
     }).catch(e => res.json({status: 'error', message: e}));
 })
+router.get('/all',(req,res)=>{
+    User.all().then(data =>{
+        res.json({status:'ok',data});
+    }).catch(e =>res.json({status:'error',message:e.message}));
+
+})
 module.exports = router;
