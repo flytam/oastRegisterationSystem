@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <td>学号</td>
+                <td>姓名</td>
+                <td>性别</td>
+                <td>邮箱</td>
+                <td>手机号</td>
+                <td>部门</td>
+            </thead>
+            <tbody id='show'>
+            </tbody>
+
+        </table>
+    </div>
+    <script>
+        $.getJSON('https://njuptdocker.cn/api/all', function (json) {
+            if (json.status === 'ok') {
+                console.log(json)
+                var tr = '';
+                for (var i = 0; i < json.data.length; i++) {
+                    if (json.data[i].department === '技术支持中心') {
+                        tr += '<td>' + json.data[i].id + '</td>' + '<td>' + json.data[i].name + '</td>' + '<td>' + json.data[i].sex + '</td>' + '<td>' + json.data[i].email + '</td>' + '<td>' + json.data[i].phone + '</td>' + '<td>' + json.data[i].department + '</td>'
+                    }
+
+                }
+                $('#show').append('<tr>' + tr + '</tr>')
+            }
+        })
+    </script>
+</body>
+
+</html>
