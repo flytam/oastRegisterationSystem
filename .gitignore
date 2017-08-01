@@ -58,4 +58,4 @@ typings/
 .env
 
 
-config.js
+serve/config.js
