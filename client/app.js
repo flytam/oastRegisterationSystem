@@ -2,22 +2,37 @@
 App({
   onLaunch: function () {
     wx.login({
-      success: (res)=>{
+      success: (res) => {
         //获取登陆的code存在全局种
-        this.globalData.code = res.code;
-        //console.log(res.code)
-        
-        let that = this;
-        //初次登陆的时候检测是否提交了数据
-
-        /*************/
-        /****************/
+        console.log(res.code)
+        if (res.code) {
+          wx.request({
+            url: 'https://njuptdocker.cn/api/code2openid',
+            method: 'POST',
+            header: {
+              'content-type': 'application/json'
+            },
+            data: {
+              code: res.code,
+              test: 'xxx'
+            },
+            success: function (res) {
+              console.log(res.data)
+              if (res.data.status === 'ok') {
+                try {
+                  wx.setStorageSync('session', res.data.session)
+                  console.log('sss', res.data.session)
+                } catch (e) {
+                  console.log(e)
+                }
+              } else {
+                console.log(res.data.message);
+              }
+            }
+          })
+        }
 
       }
     })
-  },
-  globalData:{
-    code:"",
-    hasPost:false
   }
 })

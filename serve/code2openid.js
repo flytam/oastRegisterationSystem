@@ -10,7 +10,8 @@ function code2openid(code) {
             res.on('end',()=>{
                 let parse = JSON.parse(data);
                 if (parse.openid!==undefined){
-                                    resolve(parse.openid);
+                    console.log(parse.openid)
+                                    resolve(parse);
                 }
                 else{
                     reject(parse.errmsg)

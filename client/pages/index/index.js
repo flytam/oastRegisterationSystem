@@ -58,7 +58,7 @@ Page({
         sex,
         phone,
         email,
-        code: getApp().globalData.code
+        session: wx.getStorageSync('session')
       },
       header: {
         'content-type': 'application/json'
