@@ -9,7 +9,6 @@ router.get('/', (req, res) => {
 router.post('/code2openid', (req, res) => {
     //用code换取openid并返回签名
     const {code} = req.body;
-    console.log('code',req.body)
     code2openid(code).then(data => {
         const {openid} = data;
         //存到缓存中
@@ -18,10 +17,6 @@ router.post('/code2openid', (req, res) => {
                 if (err) {
                     res.json({status: 'error', message: err})
                 } else {
-
-                    cache.get(key,(err,value) =>console.log('ssss',value))
-
-
                     res.json({status: 'ok', session: key})
                 }
             })
@@ -41,7 +36,6 @@ router.post('/post', (req, res) => { //提交登陆信息过来
     } = req.body;
     //查找session是否有效
     cache.get(session, (err, value) => {
-        console.log('chacc',value)
         if (err) {
             res.json({status: 'ok', message: err})
         } else {
@@ -66,7 +60,7 @@ router.post('/post', (req, res) => { //提交登陆信息过来
                                 sex,
                                 phone,
                                 email,
-                                openid:value
+                                openid: value
                             })
                                 .then(ok => res.json({status: 'ok'}))
                                 .catch(e => res.json({status: 'error', message: e.message}))
@@ -86,7 +80,8 @@ router.post('/post', (req, res) => { //提交登陆信息过来
                                 .then(ok => res.json({status: 'ok'}))
                                 .catch(e => res.json({status: 'error', message: e}));
                         }
-                    }).catch(e =>res.json({status:'error',message:e.message}));
+                    })
+                    .catch(e => res.json({status: 'error', message: e.message}));
 
             }
         }
