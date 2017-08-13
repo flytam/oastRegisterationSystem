@@ -32,10 +32,10 @@ router.post('/post', (req, res) => { //提交登陆信息过来
         phone,
         email,
         code,
-        session
+        session //签名的第三方session
     } = req.body;
     //查找session是否有效
-    cache.get(session, (err, value) => {
+    cache.get(session, (err, value) => { //这个value是openid
         if (err) {
             res.json({status: 'ok', message: err})
         } else {
@@ -86,7 +86,29 @@ router.post('/post', (req, res) => { //提交登陆信息过来
             }
         }
     })
-
+})
+router.get('/info', (req, res) => { //根据session查询的用户信息
+    const {session} = req.query;
+    cache.get(session, (err, value) => {
+        if (err) {
+            res.json({status: 'error', message: err.message})
+        } else {
+            User
+                .findOne({
+                where: {
+                    openid: value
+                }
+            })
+                .then(data => {
+                    if (data === null) {
+                        res.json({status: 'none'})
+                    } else {
+                        res.json({status: 'ok', data})
+                    }
+                })
+                .catch(e => res.json({status: 'error', message: e.message}))
+        }
+    })
 })
 router.get('/all', (req, res) => {
     User
