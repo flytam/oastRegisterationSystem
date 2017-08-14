@@ -110,6 +110,26 @@ router.get('/info', (req, res) => { //根据session查询的用户信息
         }
     })
 })
+router.get('/test', (req, res) => { //根据session查询的用户信息
+    const {openid} = req.query;
+    
+            User
+                .findOne({
+                where: {
+                    openid
+                }
+            })
+                .then(data => {
+                    if (data === null) {
+                        res.json({status: 'none'})
+                    } else {
+                        res.json({status: 'ok', data})
+                    }
+                })
+                .catch(e => res.json({status: 'error', message: e.message}))
+        
+
+})
 router.get('/all', (req, res) => {
     User
         .all()
