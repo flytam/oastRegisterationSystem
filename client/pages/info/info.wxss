@@ -1,0 +1,28 @@
+.showContainer{
+    display: flex;
+    flex-direction: column;
+     align-items: center; 
+    justify-content: space-around;
+    margin-top:200rpx;
+}
+.info{
+    margin-top: 50rpx;
+}
+.image{
+    border-radius: 50%;
+    width: 200rpx;
+    height: 200rpx;
+}
+.infotext{
+    color: rgb(160, 160, 160);
+    font-weight: bold;
+}
+.info{
+    display: block;
+}
+.iconer{
+color:lightskyblue;
+position:absolute;
+top:314rpx;
+left:380rpx;
+}

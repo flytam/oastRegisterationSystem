@@ -1,0 +1,20 @@
+<view class="container showContainer">
+    <image class="image" src="{{userInfo.avatarUrl}}" mode="scaleToFill">
+    </image>
+    <icon wx:if="{{status==='ok'}}" class="iconer" size="66" color="lightskyblue" type="success_no_circle"></icon>
+    <icon wx:if="{{status==='error'}}" class="iconer" size="46" type="cancel"></icon>
+    <view wx:if="{{status==='ok'}}" class="infotext">
+        <text class="info">姓名：{{name}}</text>
+        <text class="info">学号：{{id}}</text>
+        <text class="info">性别：{{sex}}</text>
+        <text class="info">手机：{{phone}}</text>
+        <text class="info">邮箱：{{email}}</text>
+        <text class="info">部门：{{department}}</text>
+    </view>
+    <view wx:if="{{status==='error'}}"  class="infotext">
+        <text style="color:red">发生了错误，请联系管理员</text>
+    </view>
+        <view wx:if="{{status==='none'}}"  class="infotext">
+        <text style="color:red">尚未报名请报名</text>
+    </view>
+</view>

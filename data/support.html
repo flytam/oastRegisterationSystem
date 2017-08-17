@@ -30,15 +30,15 @@
     <script>
         $.getJSON('https://njuptdocker.cn/api/all', function (json) {
             if (json.status === 'ok') {
-                console.log(json)
-                var tr = '';
                 for (var i = 0; i < json.data.length; i++) {
                     if (json.data[i].department === '技术支持中心') {
+                        var tr = '';
                         tr += '<td>' + json.data[i].id + '</td>' + '<td>' + json.data[i].name + '</td>' + '<td>' + json.data[i].sex + '</td>' + '<td>' + json.data[i].email + '</td>' + '<td>' + json.data[i].phone + '</td>' + '<td>' + json.data[i].department + '</td>'
+                        $('#show').append('<tr>' + tr + '</tr>')
                     }
 
                 }
-                $('#show').append('<tr>' + tr + '</tr>')
+                
             }
         })
     </script>

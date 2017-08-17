@@ -9,7 +9,7 @@ Page({
     index: 0,
     index2: 0,
     sexs: [
-      '请选择性别', '男', '女', '其他'
+      '  ', '男', '女', '其他'
     ],
     weixin_id: "",
     id: "",
@@ -21,11 +21,12 @@ Page({
   },
   onLoad: function () {},
   go: function () {
-    wx.navigateTo({ //报名成功
+    wx.navigateTo({ //测试
       url: '../show/show?status=error&message=xxx'
     })
   },
   sendInfo: function () {
+    //提交报名信息
     const {
       id, //学号
       department,
@@ -64,7 +65,38 @@ Page({
         'content-type': 'application/json'
       }
     })
-
+  },
+  getInfo: function(){
+    wx.request({
+      url: 'https://njuptdocker.cn/api/info',
+      data:{
+        session:wx.getStorageSync('session')
+      },
+      success: function(res){
+        switch(res.data.status){
+          case 'error':
+          //错误
+          wx.navigateTo({
+            url:`../info/info?status=error`
+          })
+          break;
+          case 'none':
+          //未报名
+          wx.navigateTo({
+            url:`../info/info?status=none`
+          })
+          break;
+          case 'ok':
+          wx.navigateTo({
+            //通过查询字符串传递报名信息
+            url:`../info/info?status=ok&data=${JSON.stringify(res.data.data)}`
+          })
+          break;
+          default:
+          //返回错误状态
+        }
+      }
+    })
   },
   getId: function (e) {
     this.setData({id: e.detail.value});

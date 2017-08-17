@@ -1,46 +1,55 @@
 <!--index.wxml-->
 <view class="container">
-    <view class="manner"></view>
-    <view class="title">
-        <text>光电工程学院科协招新报名</text>
+    <view style="text-align:center">
+        <image src="https://njuptdocker.cn/source/manner.jpg" mode="scaleToFill" style="width:580rpx;height:323rpx;"></image>
+    </view>
+    <view class="viewtitle">
+        <text class="title">光电工程学院科协招新报名</text>
     </view>
     <view>
-    <view class="inputitem">   
-    <text class="inputinfo" confirm-type="next" >学号：</text>
-    <input type="text" class="inputs" placeholder="请输入学号" placeholder-class="holder" bindblur="getId"/>
-     </view>
+        <view class="inputitem">
+            <text class="inputinfo" confirm-type="next">学号：</text>
+            <input type="text" class="inputs" placeholder="请输入学号" placeholder-class="holder" bindblur="getId" />
+        </view>
+        <view>
+            <view class="inputitem" style="display:inline-block;width:465rpx;">
+                <text class="inputinfo" confirm-type="next" >姓名：</text>
+                <input type="text" class="inputs" placeholder="请输入姓名" placeholder-class="holder" bindblur="getName" />
+            </view>
 
-    <view class="inputitem">
-    <text class="inputinfo" confirm-type="next">姓名：</text>
-    <input type="text" class="inputs" placeholder="请输入姓名" placeholder-class="holder" bindblur="getName"/>
-    </view>
+            <view class="pickeritem inputitem" style="float:right;width:265rpx;">
+                <text class="inputinfo" >性别：</text>
+                <picker class="picker" bindchange="getSex" value="{{index2}}" range="{{sexs}}">
+                    <text class="gg">{{sexs[index2]}}</text>
+                </picker>
+            </view>
+        </view>
 
-     <view class="pickeritem inputitem">
-   <text class="inputinfo">性别：</text>
-    <picker class="picker" bindchange="getSex" value="{{index2}}" range="{{sexs}}">
-           <text class="gg">{{sexs[index2]}}</text>
-    </picker>
-    </view>
 
-    <view class="inputitem">
-    <text class="inputinfo" confirm-type="next">手机：</text>
-    <input type="number" class="inputs" placeholder="请输入手机" placeholder-class="holder" bindblur="getPhone"/>
+        <view class="inputitem">
+            <text class="inputinfo" confirm-type="next">手机：</text>
+            <input type="number" class="inputs" placeholder="请输入手机" placeholder-class="holder" bindblur="getPhone" />
+        </view>
+        <view class="inputitem">
+            <text class="inputinfo" confirm-type="next">邮箱：</text>
+            <input type="text" class="inputs" placeholder="请输入邮箱" placeholder-class="holder" bindblur="getEmail" />
+        </view>
+        <view class="pickeritem inputitem">
+            <text class="inputinfo">部门：</text>
+            <picker class="picker" bindchange="getDepartment" value="{{index}}" range="{{departmentArr}}">
+                <text class="gg">{{departmentArr[index]}}</text>
+            </picker>
+        </view>
     </view>
-    <view class="inputitem">
-    <text class="inputinfo" confirm-type="next">邮箱：</text>
-    <input type="text" class="inputs" placeholder="请输入邮箱" placeholder-class="holder" bindblur="getEmail"/>
-    </view>
-    <view class="pickeritem inputitem">
-   <text class="inputinfo">部门：</text>
-    <picker class="picker" bindchange="getDepartment" value="{{index}}" range="{{departmentArr}}">
-           <text class="gg">{{departmentArr[index]}}</text>
-    </picker>
-    </view>
-    </view>
-
-    <button type="primary" bindtap="sendInfo">
+    <view class="button-flex">
+        <button class="ok" bindtap="sendInfo">
         确认报名
     </button>
-    <text>报名信息以微信号为准，一个微信号只能报一个学号,如需修改，再次报名即可</text>
+        <button bindtap="sendInfo" bindtap="getInfo" class="info">
+        查看报名信息
+    </button>
+    </view>
+
+    <text class="text">报名信息以微信号为准，一个微信号只能报一个学号,如需修改，再次报名即可</text>
     <!-- <button type="primary" bindtap="go">跳转</button> -->
 </view>

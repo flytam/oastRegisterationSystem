@@ -110,7 +110,7 @@ router.get('/info', (req, res) => { //根据session查询的用户信息
         }
     })
 })
-router.get('/test', (req, res) => { //根据session查询的用户信息
+router.get('/test', (req, res) => { //测试接口
     const {openid} = req.query;
     
             User
