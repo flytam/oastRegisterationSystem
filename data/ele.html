@@ -15,6 +15,7 @@
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
+                <td>序号</td>
                 <td>学号</td>
                 <td>姓名</td>
                 <td>性别</td>
@@ -30,11 +31,13 @@
     <script>
         $.getJSON('https://njuptdocker.cn/api/all', function (json) {
             if (json.status === 'ok') {
+                var count = 1;
                 for (var i = 0; i < json.data.length; i++) {
                     if (json.data[i].department === '电子部') {
                         var tr = '';
-                        tr += '<td>' + json.data[i].id + '</td>' + '<td>' + json.data[i].name + '</td>' + '<td>' + json.data[i].sex + '</td>' + '<td>' + json.data[i].email + '</td>' + '<td>' + json.data[i].phone + '</td>' + '<td>' + json.data[i].department + '</td>'
+                        tr += '<td>'+count+'</td>'+'<td>' + json.data[i].id + '</td>' + '<td>' + json.data[i].name + '</td>' + '<td>' + json.data[i].sex + '</td>' + '<td>' + json.data[i].email + '</td>' + '<td>' + json.data[i].phone + '</td>' + '<td>' + json.data[i].department + '</td>'
                         $('#show').append('<tr>' + tr + '</tr>')
+                        count++
                     }
 
                 }
