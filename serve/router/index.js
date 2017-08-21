@@ -3,6 +3,8 @@ const code2openid = require('../code2openid');
 const User = require('../mysql');
 const random = require('../createRandom');
 const cache = require('../cache');
+const nodeExcel = require('excel-export');
+const uuid = require('node-uuid');
 router.get('/', (req, res) => {
     res.end('hello')
 });
@@ -138,5 +140,61 @@ router.get('/all', (req, res) => {
         })
         .catch(e => res.json({status: 'error', message: e.message}));
 
+})
+router.get('/excel',(req,res) =>{
+    //导出excel表格数据打印
+    const {department} = req.query;//打印哪个部门
+    let dep;
+    switch(department){
+        case 'computer':
+        dep='计算机部';
+        break;
+        case 'support':
+        dep='技术支持中心';
+        break;
+        case 'ele':
+        dep = '电子部';
+        break;
+        default:
+        return;
+    }
+    const conf={};
+    //每一列的表头
+    conf.cols=[{
+        caption:'序号',
+        type:'number'
+    },{
+        caption:'学号',
+        type:'string'
+    },{
+        caption:'姓名',
+        type:'string'
+    },{
+        caption:'性别',
+        type:'string'
+    },{
+        caption:'邮箱',
+        type:'string'
+    },{
+        caption:'手机号',
+        type:'string'
+    },{
+        caption:'部门',
+        type:'string'
+    }];
+    User.findAll({where:{
+        department:dep
+    }}).then(data =>{
+        //每一行的数据
+        
+        conf.rows = data.map((item,index) =>{
+         return [index+1,item.id,item.name,item.sex,item.email,item.phone,item.department]   
+        });
+        const result = nodeExcel.execute(conf);
+        res.setHeader('Content-Type', 'application/vnd.openxmlformats');
+        res.setHeader("Content-Disposition", `attachment; filename=${department}.xlsx`);
+        res.end(result, 'binary');
+    }).catch(e =>res.json({status:'error',message:e.message}));
+    
 })
 module.exports = router;
