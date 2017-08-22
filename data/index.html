@@ -9,10 +9,34 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <style>
+    .contain{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        height: 100%;
+        position: relative;
+    }
+    .margin{
+        margin-bottom: 10px;
+    }
+    </style>
 </head>
 
 <body>
-    <h1>报名统计入口</h1>
+    <div class="contain">
+            <h1 class="margin">统计入口</h1>
+            <button type="button" class="btn btn-info margin" onclick="window.open('./computer.html')">计算机部</button>
+            <button type="button" class="btn btn-info margin" onclick="window.open('./ele.html')">电子部</button>
+            <button type="button" class="btn btn-info margin" onclick="window.open('./support.html')">技术支持中心</button>
+            <span style="color:darkgrey;position:absolute;bottom:0px;left:50%;margin-left:-85px;">created by OAST computer</span>
+        </div>
 
+    <script>
+    window.onload = () => {
+        document.getElementsByClassName('contain')[0].style.height = window.innerHeight + 'px'
+    }
+    </script>
 </body>
+
 </html>
